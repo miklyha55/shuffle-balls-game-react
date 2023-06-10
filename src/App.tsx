@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Level from './components/Level';
+import { CLASS_NAMES } from './constants';
+import json from './configs/level.json';
+import Grid from './components/Grid';
+import './css/App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const levelCount: number = 0;
+
+	return (
+		<div className = {CLASS_NAMES.App}>
+			<Level>
+				<Grid
+					flaskConfig = { json[levelCount].config.flaskConfig }
+					gridConfig = { json[levelCount].config.gridConfig }
+					ballConfig = { json[levelCount].config.ballConfig }
+				></Grid>
+			</Level>
+		</div>
+	);
 }
 
 export default App;

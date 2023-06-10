@@ -1,0 +1,69 @@
+[
+    {
+        "config": {
+            "gridConfig": {
+                "col": 3,
+                "row": 2,
+                "width": 100,
+                "height": 250
+            },
+
+            "flaskConfig": [
+                {
+                    "balls": []
+                },
+                {
+                    "balls": ["red", "green", "orange", "blue"]
+                },
+                {
+                    "balls": []
+                },
+                {
+                    "balls": ["red", "green", "orange", "blue"]
+                },
+                {
+                    "balls": []
+                },
+                {
+                    "balls": ["red", "green", "orange", "blue"]
+                }
+            ],
+
+            "ballConfig": {
+                "ballCount": 4,
+                "ballSize": 50
+            }
+        }
+    },
+    {
+        "config": {
+            "gridConfig": {
+                "col": 3,
+                "row": 2,
+                "width": 100,
+                "height": 250,
+                "ballSize": 50
+            },
+
+            "flaskConfig": [
+                {
+                    "balls": []
+                },
+                {
+                    "balls": ["red", "green", "orange", "blue"]
+                },
+                {
+                    "balls": []
+                },
+                {
+                    "balls": ["red", "green", "orange", "blue"]
+                }
+            ],
+
+            "ballConfig": {
+                "ballCount": 4,
+                "ballSize": 50
+            }
+        }
+    }
+]
