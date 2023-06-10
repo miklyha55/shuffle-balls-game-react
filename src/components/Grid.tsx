@@ -1,7 +1,7 @@
 import { CLASS_NAMES } from "../constants";
 import { IROConfigCfg } from "../interfaces";
-import Flask from "./Flask";
 import React, { CSSProperties } from "react";
+import Flask from "./Flask";
 import '../css/Grid.css';
 
 const Grid = (props: IROConfigCfg) => {
@@ -36,7 +36,7 @@ const Grid = (props: IROConfigCfg) => {
         return flaskArray;
     }
 
-    return <div style = { gridStyle } className={CLASS_NAMES.Grid}>
+    return <div style = { gridStyle } className = { CLASS_NAMES.Grid }>
         { createFlask() }
     </div>
 }

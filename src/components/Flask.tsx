@@ -1,8 +1,8 @@
 import { CLASS_NAMES } from "../constants";
 import { IROFlaskCfg } from "../interfaces";
+import { CSSProperties } from "react";
 import Ball from "./Ball";
 import '../css/Flask.css';
-import { CSSProperties } from "react";
 
 const Flask = (props: IROFlaskCfg) => {
     const falskWrapperStyle: CSSProperties = {

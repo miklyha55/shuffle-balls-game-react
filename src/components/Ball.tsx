@@ -1,7 +1,7 @@
 import { CLASS_NAMES } from "../constants";
 import { IROBallCfg } from "../interfaces";
-import '../css/Ball.css';
 import { CSSProperties } from "react";
+import '../css/Ball.css';
 
 const Ball = (props: IROBallCfg) => {
     const ballStyle: CSSProperties = {
