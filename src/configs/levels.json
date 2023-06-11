@@ -16,7 +16,7 @@
                     "balls": ["red", "green", "orange", "blue"]
                 },
                 {
-                    "balls": []
+                    "balls": ["red", "green", "orange", "blue"]
                 },
                 {
                     "balls": ["red", "green", "orange", "blue"]

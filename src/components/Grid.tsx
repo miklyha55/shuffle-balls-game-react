@@ -1,10 +1,13 @@
 import { CLASS_NAMES } from "../constants";
 import { IROConfigCfg } from "../interfaces";
 import React, { CSSProperties } from "react";
-import Flask from "./Flask";
+import { useAppSelector } from "../store/hook";
+import FlaskWrapper from "./FlaskWrapper";
 import '../css/Grid.css';
 
 const Grid = (props: IROConfigCfg) => {
+    const flaskStoreArray: Array<Array<string>> = useAppSelector(state => state.root.flaskArray);
+
     const width: number = props.gridConfig.width * props.gridConfig.col;
     const height: number = props.gridConfig.height * props.gridConfig.row;
     const gridStyle: CSSProperties = { width, height };
@@ -15,21 +18,24 @@ const Grid = (props: IROConfigCfg) => {
     const createFlask = () => {
         for (let row = 0; row < props.gridConfig.row; row++) {
             for (let col = 0; col < props.gridConfig.col; col++) {
-                if (index === props.flaskConfig.length) {
+                if (index === flaskStoreArray.length) {
                     break;
                 }
-
+                
                 flaskArray.push(
-                <Flask
-                    key = { index }
-                    balls = { props.flaskConfig[index].balls }
-                    x = { col * props.gridConfig.width }
-                    y = { row * props.gridConfig.height }
-                    width = { props.gridConfig.width }
-                    height = { props.gridConfig.height }
-                    ballCount = { props.ballConfig.ballCount }
-                    ballSize = { props.ballConfig.ballSize }
-                ></Flask>);
+                    <FlaskWrapper
+                        key = { index }
+                        index = { index }
+                        balls = { flaskStoreArray[index] }
+                        x = { col * props.gridConfig.width }
+                        y = { row * props.gridConfig.height }
+                        width = { props.gridConfig.width }
+                        height = { props.gridConfig.height }
+                        ballCount = { props.ballConfig.ballCount }
+                        ballSize = { props.ballConfig.ballSize }
+                    ></FlaskWrapper>
+                );
+
                 index++;
             }
         }

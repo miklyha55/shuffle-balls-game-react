@@ -1,28 +1,46 @@
 import { CLASS_NAMES } from "../constants";
-import { IROFlaskCfg } from "../interfaces";
-import { CSSProperties } from "react";
+import { ICurrentBallCfg, IROFlaskCfg } from "../interfaces";
+import { CSSProperties, useEffect } from "react";
 import Ball from "./Ball";
 import '../css/Flask.css';
+import { useAppDispatch } from "../store/hook";
+import { setBall } from "../store/stateSlice";
 
 const Flask = (props: IROFlaskCfg) => {
-    const falskWrapperStyle: CSSProperties = {
-        width: props.width,
-        height: props.height,
-        left: props.x,
-        top: props.y,
-    };
+    const ballCfgArray: Array<ICurrentBallCfg> = [];
+    const dispatch = useAppDispatch();
 
     const falskStyle: CSSProperties = {
         width: props.ballSize,
         height: props.ballCount * props.ballSize,
     };
 
+    const onClickHandler = () => {
+        if(!ballCfgArray.length) {
+            dispatch(setBall({
+                flaskIndex: props.index,
+                ballIndex: -1,
+                color: "",
+            }));
+            return;
+        }
+
+        dispatch(setBall(ballCfgArray[ballCfgArray.length - 1]));
+    }
+
     const createBalls = () => {
         const ballArray: Array<React.ReactElement> = [];
 
         props.balls.forEach((key, index) => {
+            ballCfgArray.push({
+                flaskIndex: props.index,
+                ballIndex: index,
+                color: key,
+            });
+            
             ballArray.push(
                 <Ball 
+                    key = { index }
                     color = { key }
                     x = { 0 }
                     y = { index * props.ballSize } 
@@ -33,10 +51,8 @@ const Flask = (props: IROFlaskCfg) => {
         return ballArray;
     }
 
-    return <div style = { falskWrapperStyle } className = { CLASS_NAMES.FlaskWrapper }>
-        <div style = { falskStyle } className = { CLASS_NAMES.Flask }>
-            { createBalls() }
-        </div>
+    return <div onClick = { onClickHandler } style = { falskStyle } className = { CLASS_NAMES.Flask }>
+        { createBalls() }
     </div>
 }
 

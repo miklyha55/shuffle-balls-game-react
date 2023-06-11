@@ -4,9 +4,10 @@ import { CLASS_NAMES } from './constants';
 import json from './configs/levels.json';
 import Grid from './components/Grid';
 import './css/App.css';
+import { useAppSelector } from './store/hook';
 
 function App() {
-	const levelCount: number = 0;
+	const levelCount: number = useAppSelector(state => state.root.levelCount);
 
 	return (
 		<div className = { CLASS_NAMES.App }>

@@ -6,6 +6,14 @@ export interface IROFlaskCfg {
     readonly balls: Array<string>;
     readonly ballSize: number;
     readonly ballCount: number;
+    readonly index: number;
+}
+
+export interface IROFlaskWrapperCfg {
+    readonly balls: Array<string>;
+    readonly ballSize: number;
+    readonly ballCount: number;
+    readonly index: number;
     readonly width: number;
     readonly height: number;
     readonly x: number;
@@ -38,4 +46,22 @@ export interface IROGridJsonCfg {
     readonly row: number;
     readonly width: number;
     readonly height: number;
+}
+
+export interface IROCurrentBallCfg {
+    readonly flaskIndex: number;
+    readonly ballIndex: number;
+    readonly color: string;
+}
+
+export interface IGameStateCfg {
+    levelCount: number;
+    currentBallCfg: ICurrentBallCfg | null;
+    flaskArray: Array<Array<string>>;
+}
+
+export interface ICurrentBallCfg {
+    flaskIndex: number;
+    ballIndex: number;
+    color: string;
 }
