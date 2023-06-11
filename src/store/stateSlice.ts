@@ -35,11 +35,11 @@ const stateSlice = createSlice({
             const array: Array<IFlaskArray> = [...state.flaskArray];
 
             if(state.currentBallCfg) {
-                if(currentCfg.ballIndex < json[levelCount].config.ballConfig.ballSize - 1) {
+                if(currentCfg.ballIndex < json[levelCount].config.ballConfig.ballCount - 1) {
                     array[currentCfg.flaskIndex].balls[currentCfg.ballIndex + 1]
                         = state.currentBallCfg.color;
                 } else {
-                    array[state.currentBallCfg.flaskIndex].balls[state.currentBallCfg.ballIndex + 1]
+                    array[state.currentBallCfg.flaskIndex].balls[state.currentBallCfg.ballIndex]
                         = state.currentBallCfg.color;
                 }
                 state.currentBallCfg = null;

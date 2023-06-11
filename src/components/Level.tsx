@@ -7,7 +7,6 @@ import '../css/Level.css';
 
 const Level = () => {
     const levelCount: number = useAppSelector(state => state.root.levelCount);
-    console.log(levelCount, "!!!!!");
 
     return <React.Fragment>
         <div className = { CLASS_NAMES.TitleLevel }>Level { levelCount + 1 }</div>
