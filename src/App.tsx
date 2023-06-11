@@ -3,6 +3,7 @@ import { CLASS_NAMES, SCENE_TYPE } from './constants';
 import { useAppSelector } from './store/hook';
 import Menu from './components/Menu';
 import './css/App.css';
+import './App.css';
 
 function App() {
 	const sceneType: string = useAppSelector(state => state.root.sceneType);
