@@ -5,5 +5,13 @@
     left: 0;
     right: 0;
     margin: auto;
-    background-color: greenyellow;
+    background-size: cover;
+}
+
+.Grid.Level1 {
+    background-image: url("../images/bgLevels/1.jpeg");
+}
+
+.Grid.Level2 {
+    background-image: url("../images/bgLevels/2.jpeg");
 }

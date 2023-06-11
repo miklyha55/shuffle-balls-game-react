@@ -3,13 +3,13 @@ import React, { CSSProperties, useEffect } from "react";
 import { IFlaskArray, IROConfigCfg } from "../interfaces";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { nextLevel } from "../store/stateSlice";
-import FlaskWrapper from "./FlaskWrapper";
+import Cell from "./Cell";
 import '../css/Grid.css';
 
 const Grid = (props: IROConfigCfg) => {
     const flaskStoreArray: Array<IFlaskArray> = useAppSelector(state => state.root.flaskArray);
-    const dispatch = useAppDispatch();
 
+    const dispatch = useAppDispatch();
     const checkWinner = () => {
         let counter: number = 0;
         let isWinner: boolean = false;
@@ -22,7 +22,6 @@ const Grid = (props: IROConfigCfg) => {
                     isWinner = true;
                 }
             }
-            
         });
 
         return isWinner;
@@ -47,7 +46,7 @@ const Grid = (props: IROConfigCfg) => {
                 }
                 
                 flaskArray.push(
-                    <FlaskWrapper
+                    <Cell
                         key = { index }
                         index = { index }
                         balls = { flaskStoreArray[index].balls }
@@ -58,7 +57,7 @@ const Grid = (props: IROConfigCfg) => {
                         height = { props.gridConfig.height }
                         ballCount = { props.ballConfig.ballCount }
                         ballSize = { props.ballConfig.ballSize }
-                    ></FlaskWrapper>
+                    ></Cell>
                 );
 
                 index++;
@@ -67,7 +66,8 @@ const Grid = (props: IROConfigCfg) => {
         return flaskArray;
     };
 
-    return <div style = { gridStyle } className = { CLASS_NAMES.Grid }>
+    return <div style = { gridStyle } className = {
+        CLASS_NAMES.Grid + " " + CLASS_NAMES.Level + Number(props.levelCount + 1) }>
         { createFlask() }
     </div>
 }

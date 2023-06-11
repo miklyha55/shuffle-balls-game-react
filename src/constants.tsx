@@ -8,11 +8,12 @@ export const enum CLASS_NAMES {
     Grid = "Grid",
     Flask = "Flask",
     Ball = "Ball",
-    FlaskWrapper = "FlaskWrapper",
+    Cell = "Cell",
+    Menu = "Menu",
+    Level = "Level",
     MenuButton = "MenuButton",
     TitleLevel = "TitleLevel",
     TitleMenu = "TitleMenu",
-    Menu = "Menu",
 }
 
 export const enum SCENE_TYPE {
@@ -22,3 +23,5 @@ export const enum SCENE_TYPE {
 
 export const WINNER_OPACITY = 0.5;
 export const ACTIVE_OPACITY = 1;
+export const BALL_BOTTOM_INDEX = -1;
+export const COLOR_NONE = "";

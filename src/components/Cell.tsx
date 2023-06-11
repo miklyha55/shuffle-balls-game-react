@@ -1,10 +1,10 @@
 import { CLASS_NAMES } from "../constants";
-import { IROFlaskWrapperCfg } from "../interfaces";
+import { IROCellCfg } from "../interfaces";
 import { CSSProperties } from "react";
 import Flask from "./Flask";
 import '../css/Flask.css';
 
-const FlaskWrapper = (props: IROFlaskWrapperCfg) => {
+const Cell = (props: IROCellCfg) => {
     const falskWrapperStyle: CSSProperties = {
         width: props.width,
         height: props.height,
@@ -12,7 +12,7 @@ const FlaskWrapper = (props: IROFlaskWrapperCfg) => {
         top: props.y,
     };
 
-    return <div style = { falskWrapperStyle } className = { CLASS_NAMES.FlaskWrapper }>
+    return <div style = { falskWrapperStyle } className = { CLASS_NAMES.Cell }>
         <Flask
             index = { props.index }
             isActive = { props.isActive }
@@ -23,4 +23,4 @@ const FlaskWrapper = (props: IROFlaskWrapperCfg) => {
     </div>
 }
 
-export default FlaskWrapper;
+export default Cell;

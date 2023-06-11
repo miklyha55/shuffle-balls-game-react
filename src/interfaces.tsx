@@ -10,7 +10,7 @@ export interface IROFlaskCfg {
     readonly index: number;
 }
 
-export interface IROFlaskWrapperCfg {
+export interface IROCellCfg {
     readonly balls: Array<string>;
     readonly ballSize: number;
     readonly ballCount: number;
@@ -23,6 +23,7 @@ export interface IROFlaskWrapperCfg {
 }
 
 export interface IROConfigCfg {
+    readonly levelCount: number;
     readonly gridConfig: IROGridJsonCfg;
     readonly ballConfig: IROBallJsonCfg;
 }

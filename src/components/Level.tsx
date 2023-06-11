@@ -11,6 +11,7 @@ const Level = () => {
     return <React.Fragment>
         <div className = { CLASS_NAMES.TitleLevel }>Level { levelCount + 1 }</div>
         <Grid
+            levelCount = { levelCount }
             gridConfig = { json[levelCount].config.gridConfig }
             ballConfig = { json[levelCount].config.ballConfig }
         ></Grid>
