@@ -1,4 +1,3 @@
-import './App.css';
 import Level from './components/Level';
 import { CLASS_NAMES, SCENE_TYPE } from './constants';
 import { useAppSelector } from './store/hook';

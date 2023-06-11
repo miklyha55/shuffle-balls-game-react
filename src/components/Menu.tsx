@@ -1,7 +1,7 @@
 import { CLASS_NAMES, SCENE_TYPE } from '../constants';
+import { switchScene } from '../store/stateSlice';
 import { useAppDispatch } from '../store/hook';
 import '../css/Menu.css';
-import { switchScene } from '../store/stateSlice';
 
 const Menu = () => {
     const dispatch = useAppDispatch();
