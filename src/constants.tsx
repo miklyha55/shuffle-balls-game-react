@@ -9,4 +9,16 @@ export const enum CLASS_NAMES {
     Flask = "Flask",
     Ball = "Ball",
     FlaskWrapper = "FlaskWrapper",
+    MenuButton = "MenuButton",
+    TitleLevel = "TitleLevel",
+    TitleMenu = "TitleMenu",
+    Menu = "Menu",
 }
+
+export const enum SCENE_TYPE {
+    Menu = "Menu",
+    Level = "Level",
+}
+
+export const WINNER_OPACITY = 0.5;
+export const ACTIVE_OPACITY = 1;

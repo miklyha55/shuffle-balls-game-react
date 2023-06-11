@@ -1,23 +1,25 @@
 import './App.css';
 import Level from './components/Level';
-import { CLASS_NAMES } from './constants';
-import json from './configs/levels.json';
-import Grid from './components/Grid';
-import './css/App.css';
+import { CLASS_NAMES, SCENE_TYPE } from './constants';
 import { useAppSelector } from './store/hook';
+import Menu from './components/Menu';
+import './css/App.css';
 
 function App() {
-	const levelCount: number = useAppSelector(state => state.root.levelCount);
+	const sceneType: string = useAppSelector(state => state.root.sceneType);
+
+	const getScene = () => {
+		switch (sceneType) {
+			case SCENE_TYPE.Level:
+				return <Level></Level>;
+			case SCENE_TYPE.Menu:
+				return <Menu></Menu>;
+		}
+	};
 
 	return (
 		<div className = { CLASS_NAMES.App }>
-			<Level>
-				<Grid
-					flaskConfig = { json[levelCount].config.flaskConfig }
-					gridConfig = { json[levelCount].config.gridConfig }
-					ballConfig = { json[levelCount].config.ballConfig }
-				></Grid>
-			</Level>
+			{ getScene() }
 		</div>
 	);
 }

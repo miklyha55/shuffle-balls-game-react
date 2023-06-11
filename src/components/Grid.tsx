@@ -1,12 +1,36 @@
 import { CLASS_NAMES } from "../constants";
-import { IROConfigCfg } from "../interfaces";
-import React, { CSSProperties } from "react";
-import { useAppSelector } from "../store/hook";
+import React, { CSSProperties, useEffect } from "react";
+import { IFlaskArray, IROConfigCfg } from "../interfaces";
+import { useAppDispatch, useAppSelector } from "../store/hook";
+import { nextLevel } from "../store/stateSlice";
 import FlaskWrapper from "./FlaskWrapper";
 import '../css/Grid.css';
 
 const Grid = (props: IROConfigCfg) => {
-    const flaskStoreArray: Array<Array<string>> = useAppSelector(state => state.root.flaskArray);
+    const flaskStoreArray: Array<IFlaskArray> = useAppSelector(state => state.root.flaskArray);
+    const dispatch = useAppDispatch();
+
+    const checkWinner = () => {
+        let counter: number = 0;
+        let isWinner: boolean = false;
+
+        flaskStoreArray.forEach(flaskStore => {
+            if(!flaskStore.isActive) {
+                counter++;
+
+                if(counter === props.ballConfig.ballCount) {
+                    isWinner = true;
+                }
+            }
+            
+        });
+
+        return isWinner;
+    };
+
+    useEffect(() => {
+        checkWinner() && dispatch(nextLevel());
+    }, [checkWinner()]);
 
     const width: number = props.gridConfig.width * props.gridConfig.col;
     const height: number = props.gridConfig.height * props.gridConfig.row;
@@ -26,7 +50,8 @@ const Grid = (props: IROConfigCfg) => {
                     <FlaskWrapper
                         key = { index }
                         index = { index }
-                        balls = { flaskStoreArray[index] }
+                        balls = { flaskStoreArray[index].balls }
+                        isActive = { flaskStoreArray[index].isActive }
                         x = { col * props.gridConfig.width }
                         y = { row * props.gridConfig.height }
                         width = { props.gridConfig.width }
@@ -40,7 +65,7 @@ const Grid = (props: IROConfigCfg) => {
             }
         }
         return flaskArray;
-    }
+    };
 
     return <div style = { gridStyle } className = { CLASS_NAMES.Grid }>
         { createFlask() }

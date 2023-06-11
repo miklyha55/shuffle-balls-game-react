@@ -6,6 +6,7 @@ export interface IROFlaskCfg {
     readonly balls: Array<string>;
     readonly ballSize: number;
     readonly ballCount: number;
+    readonly isActive: boolean;
     readonly index: number;
 }
 
@@ -16,18 +17,14 @@ export interface IROFlaskWrapperCfg {
     readonly index: number;
     readonly width: number;
     readonly height: number;
+    readonly isActive: boolean;
     readonly x: number;
     readonly y: number;
 }
 
 export interface IROConfigCfg {
     readonly gridConfig: IROGridJsonCfg;
-    readonly flaskConfig: Array<IROFlaskJsonCfg>;
     readonly ballConfig: IROBallJsonCfg;
-}
-
-export interface IROLevelCfg {
-    readonly children?: React.ReactNode;
 }
 
 export interface IROBallCfg {
@@ -56,8 +53,14 @@ export interface IROCurrentBallCfg {
 
 export interface IGameStateCfg {
     levelCount: number;
+    sceneType: string;
     currentBallCfg: ICurrentBallCfg | null;
-    flaskArray: Array<Array<string>>;
+    flaskArray: Array<IFlaskArray>;
+}
+
+export interface IFlaskArray {
+    isActive: boolean;
+    balls: Array<string>;
 }
 
 export interface ICurrentBallCfg {

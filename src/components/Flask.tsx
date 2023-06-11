@@ -1,10 +1,10 @@
-import { CLASS_NAMES } from "../constants";
+import { ACTIVE_OPACITY, CLASS_NAMES, WINNER_OPACITY } from "../constants";
 import { ICurrentBallCfg, IROFlaskCfg } from "../interfaces";
-import { CSSProperties, useEffect } from "react";
+import { useAppDispatch } from "../store/hook";
+import { checkFlaskWinner, setBall } from "../store/stateSlice";
+import { CSSProperties } from "react";
 import Ball from "./Ball";
 import '../css/Flask.css';
-import { useAppDispatch } from "../store/hook";
-import { setBall } from "../store/stateSlice";
 
 const Flask = (props: IROFlaskCfg) => {
     const ballCfgArray: Array<ICurrentBallCfg> = [];
@@ -13,9 +13,16 @@ const Flask = (props: IROFlaskCfg) => {
     const falskStyle: CSSProperties = {
         width: props.ballSize,
         height: props.ballCount * props.ballSize,
+        opacity: !props.isActive ? WINNER_OPACITY : ACTIVE_OPACITY,
     };
 
     const onClickHandler = () => {
+        if(!props.isActive) {
+            return;
+        }
+
+        dispatch(checkFlaskWinner(props.index));
+
         if(!ballCfgArray.length) {
             dispatch(setBall({
                 flaskIndex: props.index,
@@ -26,7 +33,7 @@ const Flask = (props: IROFlaskCfg) => {
         }
 
         dispatch(setBall(ballCfgArray[ballCfgArray.length - 1]));
-    }
+    };
 
     const createBalls = () => {
         const ballArray: Array<React.ReactElement> = [];
@@ -49,7 +56,7 @@ const Flask = (props: IROFlaskCfg) => {
         });
 
         return ballArray;
-    }
+    };
 
     return <div onClick = { onClickHandler } style = { falskStyle } className = { CLASS_NAMES.Flask }>
         { createBalls() }

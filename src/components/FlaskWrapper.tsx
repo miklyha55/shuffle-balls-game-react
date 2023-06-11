@@ -15,6 +15,7 @@ const FlaskWrapper = (props: IROFlaskWrapperCfg) => {
     return <div style = { falskWrapperStyle } className = { CLASS_NAMES.FlaskWrapper }>
         <Flask
             index = { props.index }
+            isActive = { props.isActive }
             ballCount = { props.ballCount }
             ballSize = { props.ballSize }
             balls = { props.balls }
