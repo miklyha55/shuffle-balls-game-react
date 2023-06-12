@@ -69,7 +69,7 @@ const stateSlice = createSlice({
             }
 
             if (array[action.payload].balls.every((value, index, array) => value === array[0])
-                && array[action.payload].balls.length === json[levelCount].config.ballConfig.ballCount - 1) {
+                && array[action.payload].balls.length === json[levelCount].config.ballConfig.ballCount) {
                 array[action.payload].isActive = false;
             }
 

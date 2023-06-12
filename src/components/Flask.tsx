@@ -1,7 +1,7 @@
 import { ACTIVE_OPACITY, BALL_BOTTOM_INDEX, CLASS_NAMES, COLOR_NONE, WINNER_OPACITY } from "../constants";
+import { checkFlaskWinner, setBall } from "../store/stateSlice";
 import { ICurrentBallCfg, IROFlaskCfg } from "../interfaces";
 import { useAppDispatch } from "../store/hook";
-import { checkFlaskWinner, setBall } from "../store/stateSlice";
 import { CSSProperties } from "react";
 import Ball from "./Ball";
 import '../css/Flask.css';
@@ -21,8 +21,6 @@ const Flask = (props: IROFlaskCfg) => {
             return;
         }
 
-        dispatch(checkFlaskWinner(props.index));
-
         if(!ballCfgArray.length) {
             dispatch(setBall({
                 flaskIndex: props.index,
@@ -33,6 +31,7 @@ const Flask = (props: IROFlaskCfg) => {
         }
 
         dispatch(setBall(ballCfgArray[ballCfgArray.length - 1]));
+        dispatch(checkFlaskWinner(props.index));
     };
 
     const createBalls = () => {
