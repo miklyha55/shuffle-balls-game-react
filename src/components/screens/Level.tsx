@@ -1,9 +1,9 @@
-import { useAppSelector } from "../store/hook";
-import { CLASS_NAMES } from "../constants";
-import json from '../configs/levels.json';
-import Grid from "./Grid";
+import { useAppSelector } from "../../store/hook";
+import { CLASS_NAMES } from "../../constants";
+import json from '../../configs/levels.json';
+import Grid from "../Grid";
 import React from "react";
-import '../css/Level.css';
+import '../../css/Level.css';
 
 const Level = () => {
     const levelCount: number = useAppSelector(state => state.root.levelCount);

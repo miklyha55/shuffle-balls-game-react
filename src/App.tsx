@@ -1,7 +1,8 @@
-import Level from './components/Level';
+import Level from './components/screens/Level';
 import { CLASS_NAMES, SCENE_TYPE } from './constants';
 import { useAppSelector } from './store/hook';
-import Menu from './components/Menu';
+import Next from './components/screens/Next';
+import Menu from './components/screens/Menu';
 import './css/App.css';
 import './App.css';
 
@@ -14,6 +15,8 @@ function App() {
 				return <Level></Level>;
 			case SCENE_TYPE.Menu:
 				return <Menu></Menu>;
+			case SCENE_TYPE.Next:
+				return <Next></Next>;
 		}
 	};
 

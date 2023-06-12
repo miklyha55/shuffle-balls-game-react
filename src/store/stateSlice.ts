@@ -52,7 +52,7 @@ const stateSlice = createSlice({
         },
 
         nextLevel(state, action: PayloadAction) {
-            state.levelCount = state.levelCount < json.length - 1 ? state.levelCount + 1 : 0;
+            state.levelCount = (state.levelCount < json.length - 1) ? state.levelCount + 1 : 0;
             levelCount = state.levelCount;
             state.flaskArray = setInitialFlaskArray();
         },

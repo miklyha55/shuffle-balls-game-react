@@ -1,8 +1,8 @@
-import { CLASS_NAMES } from "../constants";
+import { CLASS_NAMES, SCENE_TYPE } from "../constants";
 import React, { CSSProperties, useEffect } from "react";
 import { IFlaskArray, IROConfigCfg } from "../interfaces";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { nextLevel } from "../store/stateSlice";
+import { switchScene } from "../store/stateSlice";
 import Cell from "./Cell";
 import '../css/Grid.css';
 
@@ -28,7 +28,7 @@ const Grid = (props: IROConfigCfg) => {
     };
 
     useEffect(() => {
-        checkWinner() && dispatch(nextLevel());
+        checkWinner() && dispatch(switchScene(SCENE_TYPE.Next));
     }, [checkWinner()]);
 
     const width: number = props.gridConfig.width * props.gridConfig.col;
